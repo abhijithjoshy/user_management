@@ -22,3 +22,10 @@ A simple Laravel-based User Management System with authentication, CRUD operatio
 Start the local development server:
 ```bash
 php artisan serve
+
+Default Seeded Credentials
+
+You can use the following default credentials to log in after migration and seeding:
+
+Email: admin@example.com
+Password: password
