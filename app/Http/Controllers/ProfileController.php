@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -31,8 +32,13 @@ class ProfileController extends Controller
 
         // Handle photo upload
         if ($request->hasFile('photo')) {
+            // Delete old photo if exists
+            if ($user->photo && Storage::disk('public')->exists($user->photo)) {
+                Storage::disk('public')->delete($user->photo);
+            }
+            
             $photo = $request->file('photo');
-            $path = $photo->store('avatars', 'public');
+            $path = $photo->store('user_photos', 'public');
             $data['photo'] = $path;
         }
 

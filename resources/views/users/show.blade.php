@@ -6,9 +6,7 @@
     <a href="{{ route('users.index') }}" class="btn btn-secondary mb-3">Back to List</a>
     <div class="card shadow-sm">
         <div class="card-body">
-            @if($user->photo)
-                <img src="{{ asset('storage/'.$user->photo) }}" width="100" class="rounded-circle border mb-3" />
-            @endif
+            <img src="{{ $user->avatar }}" width="100" class="rounded-circle border mb-3" alt="User Photo" />
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><strong>Prefix:</strong> {{ $user->prefixname }}</li>
                 <li class="list-group-item"><strong>First Name:</strong> {{ $user->firstname }}</li>

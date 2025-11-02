@@ -1,39 +1,30 @@
-<x-app-layout>
-    <div class="alert alert-warning">TEST: If you see this, the layout renders content.</div>
+@extends('layouts.app')
 
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@section('content')
+    <div class="container py-4">
+        <div class="text-center mb-4" style="justify-items: center">
+            <img src="{{ $user->avatar }}" alt="Avatar" class="image_logo mb-3">
+            <h3 class="font-semibold text-lg">{{ $user->name }}</h3>
+            <p class="text-muted">{{ $user->email }}</p>
+        </div>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="alert alert-info">DEBUG: Profile page loaded. User: {{ $user->id ?? 'none' }}</div>
-            {{-- Remove this after debugging --}}
-            <div class="flex flex-col items-center mb-6">
-                <img src="{{ $user->avatar }}" alt="Avatar" class="w-24 h-24 rounded-full object-cover border mb-2">
-                <div class="font-semibold text-lg text-gray-800">{{ $user->name }}</div>
-                <div class="text-gray-500">{{ $user->email }}</div>
+        <div class="card mb-4">
+            <div class="card-body">
+                @include('profile.partials.update-profile-information-form')
             </div>
+        </div>
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
+        <div class="card mb-4">
+            <div class="card-body">
+                @include('profile.partials.update-password-form')
             </div>
+        </div>
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
-
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-                </div>
+        <div class="card">
+            <div class="card-body">
+                @include('profile.partials.delete-user-form')
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection
+        

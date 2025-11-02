@@ -55,9 +55,7 @@
             </div>
             <div class="col-md-4">
                 <label for="photo" class="form-label">Photo</label>
-                @if($user->photo)
-                    <img src="{{ asset('storage/'.$user->photo) }}" width="60" class="mb-2 rounded-circle border" />
-                @endif
+                <img src="{{ $user->avatar }}" width="60" class="mb-2 rounded-circle border" alt="Current Photo" />
                 <input type="file" name="photo" id="photo" class="form-control" accept="image/*">
                 @error('photo')<div class="text-danger small">{{ $message }}</div>@enderror
             </div>

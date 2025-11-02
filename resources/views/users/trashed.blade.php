@@ -27,7 +27,7 @@
                 @foreach($users as $user)
                 <tr>
                     <td>{{ $user->id }}</td>
-                    <td>@if($user->photo)<img src="{{ asset('storage/'.$user->photo) }}" width="40" class="rounded-circle border" />@endif</td>
+                    <td><img src="{{ $user->avatar }}" width="40" class="rounded-circle border" alt="User Photo" /></td>
                     <td>{{ $user->prefixname }}</td>
                     <td>{{ $user->firstname }}</td>
                     <td>{{ $user->lastname }}</td>

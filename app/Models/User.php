@@ -54,17 +54,59 @@ class User extends Authenticatable
         ];
     }
 
-    /**
-     * Get the user's avatar URL or a default avatar.
-     *
-     * @return string
-     */
     public function getAvatarAttribute()
     {
         if ($this->photo) {
             return asset('storage/' . $this->photo);
         }
-        // Return a default avatar image if no photo is set
-        return asset('images/default-avatar.png');
+        return asset('logo.png');
+    }
+
+    /**
+     * Get the user's full name.
+     *
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        $nameParts = array_filter([
+            $this->prefixname,
+            $this->firstname,
+            $this->middlename,
+            $this->lastname,
+            $this->suffixname,
+        ]);
+        
+        return implode(' ', $nameParts);
+    }
+
+    public function getMiddleinitialAttribute()
+    {
+        if (empty($this->middlename)) {
+            return '';
+        }
+
+        $firstChar = mb_substr(trim($this->middlename), 0, 1);
+        
+        return strtoupper($firstChar) . '.';
+    }
+
+    public function getFullnameAttribute()
+    {
+        $nameParts = [];
+        
+        if (!empty($this->firstname)) {
+            $nameParts[] = $this->firstname;
+        }
+        
+        if (!empty($this->middleinitial)) {
+            $nameParts[] = $this->middleinitial;
+        }
+        
+        if (!empty($this->lastname)) {
+            $nameParts[] = $this->lastname;
+        }
+        
+        return implode(' ', $nameParts);
     }
 }
