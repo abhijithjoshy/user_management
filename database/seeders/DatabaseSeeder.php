@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@example.com',
             'password' => Hash::make('password'),
             'type' => 'user',
+            'photo' => 'logo.png', 
+
         ]);
     }
 }
