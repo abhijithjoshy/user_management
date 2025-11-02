@@ -18,7 +18,7 @@
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
                         {{ __('Users') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('users.trashed')" :active="request()->routeIs('users.trashed')">
+                    <x-nav-link :href="route('users.trashed')" :active="request()->is('users/trashed')">
                         {{ __('Trashed Users') }}
                     </x-nav-link>
                 </div>
@@ -79,7 +79,7 @@
             <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
                 {{ __('Users') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('users.trashed')" :active="request()->routeIs('users.trashed')">
+            <x-responsive-nav-link :href="route('users.trashed')" :active="request()->is('users/trashed')">
                 {{ __('Trashed Users') }}
             </x-responsive-nav-link>
         </div>
