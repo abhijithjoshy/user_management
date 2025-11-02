@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
             Route::get("$name/trashed", "$controller@trashed")->name("$name.trashed");
             Route::patch("$name/{user}/restore", "$controller@restore")->name("$name.restore");
             Route::delete("$name/{user}/delete", "$controller@delete")->name("$name.delete");
+            Route::delete("$name/{user}/force-delete", "$controller@forceDelete")->name("$name.forceDelete");
         });
     }
 }

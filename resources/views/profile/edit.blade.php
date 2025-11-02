@@ -1,4 +1,6 @@
 <x-app-layout>
+    <div class="alert alert-warning">TEST: If you see this, the layout renders content.</div>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Profile') }}
@@ -7,6 +9,14 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+            <div class="alert alert-info">DEBUG: Profile page loaded. User: {{ $user->id ?? 'none' }}</div>
+            {{-- Remove this after debugging --}}
+            <div class="flex flex-col items-center mb-6">
+                <img src="{{ $user->avatar }}" alt="Avatar" class="w-24 h-24 rounded-full object-cover border mb-2">
+                <div class="font-semibold text-lg text-gray-800">{{ $user->name }}</div>
+                <div class="text-gray-500">{{ $user->email }}</div>
+            </div>
+
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-xl">
                     @include('profile.partials.update-profile-information-form')

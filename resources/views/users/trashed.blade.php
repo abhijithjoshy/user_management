@@ -38,6 +38,7 @@
                     <td>
                         <form action="{{ route('users.restore', $user->id) }}" method="POST" style="display:inline-block">
                             @csrf
+                            @method('PATCH')
                             <button type="submit" class="btn btn-success btn-sm">Restore</button>
                         </form>
                         <form action="{{ route('users.forceDelete', $user->id) }}" method="POST" style="display:inline-block">

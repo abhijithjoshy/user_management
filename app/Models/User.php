@@ -53,4 +53,18 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Get the user's avatar URL or a default avatar.
+     *
+     * @return string
+     */
+    public function getAvatarAttribute()
+    {
+        if ($this->photo) {
+            return asset('storage/' . $this->photo);
+        }
+        // Return a default avatar image if no photo is set
+        return asset('images/default-avatar.png');
+    }
 }
